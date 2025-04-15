@@ -2,7 +2,7 @@
 
 <div style="text-align: center">
 <a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.zh.md">中文</a> |
-<a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.fr.zh">Française</a>
+<a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.fr.md">Française</a>
 </div>
 
 ## Introduction
