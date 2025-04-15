@@ -1,5 +1,10 @@
 # Maple Neon：Cherry Studio 的主题
 
+<div style="text-align: center">
+<a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/README.md">English</a> |
+<a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.fr.md">Française</a>
+</div>
+
 ## 介绍
 这是专为 Cherry Studio 设计的主题。
 
