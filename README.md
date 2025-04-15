@@ -1,7 +1,4 @@
 # Maple Neon: A Theme for Cherry Studio
-<div style="text-align:center">
-<a href="./docs/README.zh.md">中文文档点这里</a>
-</div>
 
 ## Introduction
 This is a theme tailored for Cherry Studio.

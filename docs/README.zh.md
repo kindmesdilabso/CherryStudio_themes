@@ -5,7 +5,7 @@
 
 ## 使用方法
 1. (推荐) 下载 [Maple 字体](https://github.com/subframe7536/maple-font/releases)。
-2. 复制 [maple-neon.css](./maple-neon.css) 文件中的内容。
+2. 复制 [maple-neon.css](../maple-neon.css) 文件中的内容。
 3. 将其粘贴到 Cherry Studio 中。
 4. 完成！
 
@@ -21,4 +21,4 @@
 - Maple Font: https://github.com/subframe7536/maple-font
 
 ## LICENSE
-本项目遵循 [MIT LICENSE](./LICENSE)。
+本项目遵循 [MIT LICENSE](../LICENSE)。
