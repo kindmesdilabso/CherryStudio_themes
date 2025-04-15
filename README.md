@@ -14,6 +14,16 @@ This is a theme tailored for Cherry Studio.
 3. Paste it into Cherry Studio.
 4. Here you go!
 
+## What's special about the theme?
+- It provides modernized and aesthetic UI for Cherry Studio.
+- It mixes the Maple font with a neon-styled input-bar, creating a unique and visually appealing experience.
+
+## Demonstration
+Based on Cherry Studio v1.2.4
+![Page Light](./images/main-page-light.png)
+
+![Page Dark](./images/main-page-dark.png)
+
 ## Customization
 You can fork the project and modify your own theme for Cherry Studio, for exact instructions, check [Cherry Studio Docs](https://docs.cherry-ai.com/personalization-settings/css).
 

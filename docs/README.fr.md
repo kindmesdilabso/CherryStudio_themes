@@ -14,6 +14,16 @@ C'est un thème conçu pour Cherry Studio.
 3. Colliez-le dans Cherry Studio.
 4. Et voilà !
 
+## Qu'est-ce qui rend le thème spécial ?
+- Il propose une interface utilisateur modernisée et esthétique pour Cherry Studio.
+- Il mêle la police Maple à une zone de saisie au style néon, créant une expérience unique et visuellement attractive.
+
+## Exposition
+Basé sur Cherry Studio v1.2.4
+![Page claire](../images/main-page-light.png)
+
+![Page sombre](../images/main-page-dark.png)
+
 ## Personnalisation
 Vous pouvez forker le projet et modifier votre propre thème pour Cherry Studio. Pour les instructions détaillées, consultez [Documentation Cherry Studio](https://docs.cherry-ai.com/personalization-settings/css).
 
