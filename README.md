@@ -36,5 +36,8 @@ You can fork the project and modify your own theme for Cherry Studio, for exact 
 ### Fonts
 - Maple Font: https://github.com/subframe7536/maple-font
 
+### Tools
+- The Themes are constructed partly under the help of DeepSeek-0324 & Claude-3.7. 
+
 ## LICENSE
 The Project follows [MIT LICENSE](./LICENSE).

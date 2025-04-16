@@ -36,5 +36,8 @@
 ### 字体
 - Maple Font: https://github.com/subframe7536/maple-font
 
+### 工具
+- 主题部分是在DeepSeek-0324和Claude-3.7的帮助下构建的。
+
 ## LICENSE
 本项目遵循 [MIT LICENSE](../LICENSE)。
