@@ -11,7 +11,7 @@ This is a theme tailored for Cherry Studio.
 
 ## How to USE
 1. (Recommended) Download [Maple Font](https://github.com/subframe7536/maple-font/releases).
-2. Copy the content in [maple-neon.scss](./maple-neon.scss) file(for original version) or download the raw file(for customization).
+2. Copy the content in [maple-neon.scss](./themes/maple-neon.scss) file(for original version) or download the raw file(for customization).
 3. Paste it into Cherry Studio.
 4. Here you go!
 

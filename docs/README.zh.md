@@ -11,7 +11,7 @@
 
 ## 使用方法
 1. (推荐) 下载 [Maple 字体](https://github.com/subframe7536/maple-font/releases)。
-2. 复制[maple-neon.scss](../maple-neon.scss) 文件（原始版本）中的内容，或下载原始文件（用于定制）。
+2. 复制[maple-neon.scss](../themes/maple-neon.scss) 文件（原始版本）中的内容，或下载原始文件（用于定制）。
 3. 将其粘贴到 Cherry Studio 中。
 4. 完成！
 
