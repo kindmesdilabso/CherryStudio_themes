@@ -35,6 +35,7 @@ Vous pouvez forker le projet et modifier votre propre thème pour Cherry Studio.
 
 ### Polices
 - Police Maple : https://github.com/subframe7536/maple-font
+- Police HarmonyOS: https://developer.huawei.com/consumer/cn/design/resource/
 
 ### Outils  
 - Les Thèmes sont construits partiellement avec l'aide de DeepSeek-0324 & Claude-3.7.

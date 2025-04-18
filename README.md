@@ -35,6 +35,7 @@ You can fork the project and modify your own theme for Cherry Studio, for exact 
 
 ### Fonts
 - Maple Font: https://github.com/subframe7536/maple-font
+- HarmonyOS Sans: https://developer.huawei.com/consumer/cn/design/resource/
 
 ### Tools
 - The Themes are constructed partly under the help of DeepSeek-0324 & Claude-3.7. 

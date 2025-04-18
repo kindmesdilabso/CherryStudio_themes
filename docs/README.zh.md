@@ -35,6 +35,7 @@
 
 ### 字体
 - Maple Font: https://github.com/subframe7536/maple-font
+- HarmonyOS Sans: https://developer.huawei.com/consumer/cn/design/resource/
 
 ### 工具
 - 主题部分是在DeepSeek-0324和Claude-3.7的帮助下构建的。
