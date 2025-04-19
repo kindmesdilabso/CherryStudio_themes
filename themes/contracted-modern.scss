@@ -6,6 +6,16 @@
     --text-color: #262624;
     --primary-color: #4E6EF2;
 
+    /* 新增工具提示颜色 */
+    --tooltip-bg: rgba(255, 255, 255, 0.95);  // 白色半透明背景
+    --tooltip-text: #262624;  // 深色文字
+
+    /* 新增内联代码颜色变量 */
+    --inline-code-bg: rgba(0, 0, 0, 0.03);
+    --inline-code-color: #d73a49;
+    --inline-code-border: rgba(0, 0, 0, 0.1);
+    --inline-code-padding: 3px 6px;
+
     /* 间距系统 */
     --space-xs: 4px;
     --space-sm: 8px;
@@ -98,6 +108,15 @@ body[theme-mode='dark'] {
     --bubble-border: rgba(255, 255, 255, 0.1);
     --text-color: #F5F4ED;
 
+    /* 深色模式工具提示颜色 */
+    --tooltip-bg: rgba(0, 0, 0, 0.85);
+    --tooltip-text: #FFFFFF;
+
+    /* 深色模式内联代码颜色 */
+    --inline-code-bg: rgba(255, 255, 255, 0.05);
+    --inline-code-color: #ff7b72;
+    --inline-code-border: rgba(255, 255, 255, 0.15);
+
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
@@ -151,4 +170,53 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* 内联代码样式 */
+:not(pre) > code,
+.markdown-inline code,
+.markdown code:not(pre code) {
+    background: var(--inline-code-bg) !important;
+    color: var(--inline-code-color) !important;
+    border: 1px solid var(--inline-code-border) !important;
+    border-radius: 4px !important;
+    padding: var(--inline-code-padding) !important;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-size: 0.9em !important;
+    line-height: 1.4 !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin: 0 2px !important;
+}
+
+/* 工具提示基础样式 */
+[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--tooltip-bg) !important;
+    color: var(--tooltip-text) !important;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
 }
