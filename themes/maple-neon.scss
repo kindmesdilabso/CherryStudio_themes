@@ -10,7 +10,9 @@
 
   --content-font: "HarmonyOS Sans SC", "HarmonyOS Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif !important;
-  --content-font-weight: bold --input-gradient-opacity: 1;
+  --content-font-weight: normal;
+  --ui-font-weight: bold;
+  --input-gradient-opacity: 1;
 
   --box-shadow-message: 0 4px 16px -8px rgba(0, 0, 0, 0.04);
   --border-radius-message: 16px;
@@ -106,21 +108,36 @@
   opacity: 1;
 }
 
-/* 一般内容的字体设置 - 非等宽 */
+/* UI元素使用粗体 */
 body,
+div:not(.message-content-container),
+span:not(.message-content-container span),
+h1, h2, h3, h4, h5, h6,
+header,
+nav,
+.sidebar,
+.menu,
+.button,
+.tabs,
+.navigation,
+.header,
+.footer,
+.title {
+  font-family: var(--content-font);
+  font-weight: var(--ui-font-weight) !important;
+  letter-spacing: 0.018em !important;
+}
+
+/* 消息内容和输入区域正常字重 */
+.message-content-container,
+.message-content-container *,
 p,
-div,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 li,
 ul,
 ol,
-.message-content-container {
+.form-control,
+#inputbox,
+textarea {
   font-family: var(--content-font);
   font-weight: var(--content-font-weight) !important;
   letter-spacing: 0.018em !important;
@@ -134,6 +151,7 @@ code,
 .markdown-body pre *,
 .markdown-body code {
   font-family: var(--monospace-font) !important;
+  font-weight: var(--monospace-font-weight) !important;
   -webkit-font-feature-settings: "liga" 1, "calt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "zero" 1 !important;
   font-feature-settings: "liga" 1, "calt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "zero" 1 !important;
   text-rendering: optimizeLegibility;
