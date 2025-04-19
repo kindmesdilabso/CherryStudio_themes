@@ -117,7 +117,7 @@ li,
 ul,
 ol,
 .message-content-container {
-  font-family: var(--content-font), system-ui;
+  font-family: var(--content-font);
   letter-spacing: 0.018em !important;
 }
 
@@ -144,7 +144,7 @@ code,
 /* 确保代码输入区也使用等宽字体 */
 textarea.form-control,
 #inputbox {
-  font-family: var(--content-font), system-ui;
+  font-family: var(--content-font);
 }
 
 /* 代码块样式优化 */
@@ -231,5 +231,5 @@ body[theme-mode="dark"] .markdown-body pre {
 
 /* 输入区域内的字体处理 */
 .form-control {
-  font-family: var(--content-font), system-ui;
+  font-family: var(--content-font);
 }
