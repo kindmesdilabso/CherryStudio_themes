@@ -21,9 +21,9 @@ C'est un thème conçu pour Cherry Studio.
 
 ## Exposition
 Basé sur Cherry Studio v1.2.4
-![Page claire](../images/main-page-light.png)
+![Page claire](../examples/main-page-light.png)
 
-![Page sombre](../images/main-page-dark.png)
+![Page sombre](../examples/main-page-dark.png)
 
 ## Personnalisation
 Vous pouvez forker le projet et modifier votre propre thème pour Cherry Studio. Pour les instructions détaillées, consultez [Documentation Cherry Studio](https://docs.cherry-ai.com/personalization-settings/css).
