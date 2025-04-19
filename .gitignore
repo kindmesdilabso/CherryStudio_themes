@@ -1,9 +1,0 @@
-# Setting folders
-./.idea
-./.vscode
-
-# local reference folders
-./templates
-
-# .gitignore
-./.gitignore
