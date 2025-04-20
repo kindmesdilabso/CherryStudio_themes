@@ -199,18 +199,17 @@ body[theme-mode="dark"] {
   }
 }
 
-/* 暗色模式设置 */
 body[theme-mode="light"] {
-  --color-primary: #3f6ec8;
-  --color-primary-soft: #5b87df;
-  --color-primary-mute: #2a4b87;
+  --color-primary: #1b579c; // 卡布里蓝，原色：#3f6ec8
+  --color-primary-soft: #0077be; // 海浪蓝，原色：#5b87df
+  --color-primary-mute: #002fa7; // 克莱茵蓝，原色：#013153
   --input-gradient-opacity: 0.3;
 }
-
+/* 暗色模式设置 */
 body[theme-mode="dark"] {
-  --color-primary: #5b87df;
-  --color-primary-soft: #3f6ec8;
-  --color-primary-mute: #2a4b87;
+  --color-primary: #2775b6; // 景泰蓝，原色：#5b87df
+  --color-primary-soft: #346c9c; // 海军蓝，原色：#3f6ec8
+  --color-primary-mute: #0f52ba; // 宝石蓝，原色：#2a4b87
   --color-border: rgba(255, 255, 255, 0.1);
   --chat-background-assistant: #1e1e24;
   --chat-text-user: #edeef0;
