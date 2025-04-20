@@ -2,7 +2,7 @@
 
 /* 基础变量定义 */
 :root {
-  --chat-background-white: #fff;
+  --chat-background-assistant: #fff;
   --color-border: rgba(120, 120, 120, 0.08) !important;
 
   --monospace-font: "Maple Mono NF CN", "Fira Code", monospace !important;
@@ -20,7 +20,7 @@
 
 /* 消息容器样式 */
 .message-content-container {
-  background: var(--chat-background-white) !important;
+  background: var(--chat-background-assistant) !important;
   box-shadow: var(--box-shadow-message) !important;
   border: 1px solid var(--color-border) !important;
   border-radius: var(--border-radius-message) !important;
@@ -30,7 +30,7 @@
 }
 
 .message-user .message-content-container {
-  background: #fbfcfc !important;
+  background: #f5f5f5 !important;
   box-shadow: 0 8px 28px -12px rgba(0, 0, 0, 0.05) !important;
 }
 
@@ -212,7 +212,7 @@ body[theme-mode="dark"] {
   --color-primary-soft: #3f6ec8;
   --color-primary-mute: #2a4b87;
   --color-border: rgba(255, 255, 255, 0.1);
-  --chat-background-white: #1e1e24;
+  --chat-background-assistant: #1e1e24;
   --chat-text-user: #edeef0;
   --color-text: #edeef0;
   --box-shadow-message: 0 4px 16px -8px rgba(0, 0, 0, 0.4);
@@ -220,7 +220,7 @@ body[theme-mode="dark"] {
 }
 
 body[theme-mode="dark"] .message-content-container {
-  background: var(--chat-background-white) !important;
+  background: var(--chat-background-assistant) !important;
   box-shadow: var(--box-shadow-message) !important;
   border: 1px solid var(--color-border) !important;
 }
