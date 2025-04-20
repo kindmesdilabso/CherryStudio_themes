@@ -129,8 +129,8 @@ nav,
 .footer,
 .title {
   font-family: var(--content-font);
-  font-weight: var(--ui-font-weight) !important;
-  letter-spacing: 0.018em !important;
+  font-weight: var(--ui-font-weight);
+  // letter-spacing: 0.018em !important;
 }
 
 /* 消息内容和输入区域正常字重 */
@@ -144,7 +144,7 @@ ol,
 #inputbox,
 textarea {
   font-family: var(--content-font);
-  font-weight: var(--content-font-weight) !important;
+  font-weight: var(--content-font-weight);
   letter-spacing: 0.018em !important;
 }
 
@@ -156,15 +156,10 @@ code,
 .markdown-body pre *,
 .markdown-body code {
   font-family: var(--monospace-font) !important;
-  font-weight: var(--monospace-font-weight) !important;
+  font-weight: var(--monospace-font-weight);
   -webkit-font-feature-settings: "liga" 1, "calt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "zero" 1 !important;
   font-feature-settings: "liga" 1, "calt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "zero" 1 !important;
   text-rendering: optimizeLegibility;
-}
-
-.markdown-body pre code {
-  font-size: 0.92em;
-  padding: 0.8em;
 }
 
 /* 确保代码输入区也使用等宽字体 */
