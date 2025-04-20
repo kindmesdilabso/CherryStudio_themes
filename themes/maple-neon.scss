@@ -68,10 +68,6 @@
   opacity: 0.5 !important;
 }
 
-[theme-mode="dark"] #inputbar:focus-within::before {
-  opacity: 0.5 !important;
-}
-
 #inputbar {
   z-index: 1;
   position: relative;
@@ -205,6 +201,7 @@ body[theme-mode="dark"] {
   }
 }
 
+/* 亮色模式设置 */
 body[theme-mode="light"] {
   --color-primary: #1b579c; // 卡布里蓝，原色：#3f6ec8
   --color-primary-soft: #0077be; // 海浪蓝，原色：#5b87df
