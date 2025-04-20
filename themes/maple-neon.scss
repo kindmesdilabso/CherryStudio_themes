@@ -86,11 +86,17 @@
   border-radius: inherit;
   padding: 2px;
   background: linear-gradient(90deg,
-      #d65f00,
-      #ffb800,
+      #ff6a01,
+      /* 爱马仕橙，原色：#d65f00 */
+      #f8c91c,
+      /* 那不勒斯黄，原色：#ffb800 */
       #8a2be2,
-      #ffb800,
-      #d45e00);
+      /* 紫罗兰色，原色：#8a2be2 */
+      #f8c91c,
+      /* #ffb800 */
+      #ff6901
+      /* #d65e00 */
+    );
   background-size: 200% 200%;
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
@@ -205,6 +211,7 @@ body[theme-mode="light"] {
   --color-primary-mute: #002fa7; // 克莱茵蓝，原色：#013153
   --input-gradient-opacity: 0.3;
 }
+
 /* 暗色模式设置 */
 body[theme-mode="dark"] {
   --color-primary: #2775b6; // 景泰蓝，原色：#5b87df
