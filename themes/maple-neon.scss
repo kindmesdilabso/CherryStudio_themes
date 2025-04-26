@@ -130,7 +130,7 @@ nav,
 .header,
 .footer,
 .title {
-  font-family: var(--content-font);
+  font-family: var(--content-font), sans-serif;
   font-weight: var(--ui-font-weight);
   // letter-spacing: 0.018em !important;
 }
@@ -145,7 +145,7 @@ ol,
 .form-control,
 #inputbox,
 textarea {
-  font-family: var(--content-font);
+  font-family: var(--content-font), system-ui;
   font-weight: var(--content-font-weight);
   letter-spacing: 0.018em !important;
 }
@@ -157,7 +157,7 @@ code,
 .markdown-body pre,
 .markdown-body pre *,
 .markdown-body code {
-  font-family: var(--monospace-font) !important;
+  font-family: var(--monospace-font), monospace !important;
   font-weight: var(--monospace-font-weight);
   -webkit-font-feature-settings: "liga" 1, "calt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "zero" 1 !important;
   font-feature-settings: "liga" 1, "calt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "zero" 1 !important;
@@ -167,7 +167,7 @@ code,
 /* 确保代码输入区也使用等宽字体 */
 textarea.form-control,
 #inputbox {
-  font-family: var(--monospace-font) !important;
+  font-family: var(--monospace-font), system-ui !important;
 }
 
 /* 代码块样式优化 */
@@ -255,5 +255,5 @@ body[theme-mode="dark"] .markdown-body pre {
 
 /* 输入区域内的字体处理 */
 .form-control {
-  font-family: var(--content-font) !important;
+  font-family: var(--content-font), system-ui !important;
 }
