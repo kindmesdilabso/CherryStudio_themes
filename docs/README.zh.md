@@ -10,10 +10,11 @@
 这是专为 Cherry Studio 设计的主题。
 
 ## 使用方法
-1. (推荐) 下载 [Maple 字体](https://github.com/subframe7536/maple-font/releases)。
-2. 复制[maple-neon-minimal.scss](../themes/maple-neon-minimal.scss) 文件（原始版本）中的内容，或下载原始文件（用于定制）。
-3. 将其粘贴到 Cherry Studio 中。
-4. 完成！
+1. (推荐) 下载 [Maple 字体](https://github.com/subframe7536/maple-font/releases/download/v7.2/MapleMono-NF-CN-unhinted.zip)。
+2. （推荐但非必需）从 [鸿蒙字体](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip) 下载鸿蒙字体。
+3. 复制[maple-neon-minimal.scss](../themes/maple-neon-minimal.scss) 文件（原始版本）中的内容，或下载原始文件（用于定制）。
+4. 将其粘贴到 Cherry Studio 中。
+5. 完成！
 
 ## 特别之处？
 - 为Cherry Studio提供现代且美观的用户界面。

@@ -10,10 +10,11 @@ Français
 C'est un thème conçu pour Cherry Studio.
 
 ## Comment utiliser
-1. (Recommandé) Téléchargez [Maple Font](https://github.com/subframe7536/maple-font/releases).
-2. Copiez le contenu du fichier [maple-neon-minimal.scss](../themes/maple-neon-minimal.scss) (pour la version d'origine) ou téléchargez le fichier brut (pour la personnalisation).
-3. Colliez-le dans Cherry Studio.
-4. Et voilà !
+1. (Recommandé) Téléchargez [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.2/MapleMono-NF-CN-unhinted.zip).
+2. (Recommandé mais pas obligatoire) Téléchargez Harmony OS Sans depuis [Harmony OS Sans](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip).
+3. Copiez le contenu du fichier [maple-neon-minimal.scss](../themes/maple-neon-minimal.scss) (pour la version d'origine) ou téléchargez le fichier brut (pour la personnalisation).
+4. Colliez-le dans Cherry Studio.
+5. Et voilà !
 
 ## Qu'est-ce qui rend le thème spécial ?
 - Il propose une interface utilisateur modernisée et esthétique pour Cherry Studio.
