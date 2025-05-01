@@ -29,7 +29,7 @@ Basé sur Cherry Studio v1.2.4
 Vous pouvez forker le projet et modifier votre propre thème pour Cherry Studio. Pour les instructions détaillées, consultez [Documentation Cherry Studio](https://docs.cherry-ai.com/personalization-settings/css).
 
 ## Un dernier coup d'œil
-Pour d'autres thèmes, consultez [Un dernier coup d'œil](./OneMoreGlance.md)
+Pour d'autres thèmes, consultez [Un dernier coup d'œil](../OneMoreGlance.md)
 
 ## Inspirations
 ### Thèmes
