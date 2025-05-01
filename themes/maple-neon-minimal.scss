@@ -1,0 +1,121 @@
+/* Maple Neon Theme */
+
+/* 基础变量定义 */
+:root {
+    //   --chat-background-assistant: #fff;
+    //   --color-border: rgba(120, 120, 120, 0.08) !important;
+
+    --monospace-font: "Maple Mono NF CN", "Fira Code", monospace !important;
+    --monospace-font-weight: normal;
+
+    --content-font: "HarmonyOS Sans SC", "HarmonyOS Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif !important;
+    --content-font-weight: normal;
+    --ui-font-weight: bold;
+
+    // --input-gradient-opacity: 1;
+
+    //   --box-shadow-message: 0 4px 16px -8px rgba(0, 0, 0, 0.04);
+    //   --border-radius-message: 16px;
+}
+
+/* 消息容器样式：增加霓虹AI助手效果 */
+/* 输入框动画效果 */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+#inputbar::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 3px;
+    background: linear-gradient(
+        90deg,
+        #ff6a01,
+        /* 爱马仕橙，原色：#d65f00 */ #f8c91c,
+        /* 那不勒斯黄，原色：#ffb800 */ #8a2be2,
+        /* 紫罗兰色，原色：#8a2be2 */ #f8c91c,
+        /* #ffb800 */ #ff6901 /* #d65e00 */
+    );
+    background-size: 200% 200%;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: gradientFlow 4s linear infinite;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    pointer-events: auto;
+}
+
+#inputbar:focus-within {
+    animation: blinking 4s linear infinite;
+}
+
+#inputbar:focus-within::before {
+    opacity: 1;
+}
+
+/* 字体样式更改 */
+/* UI元素使用粗体 */
+body,
+div:not(.message-content-container),
+span:not(.message-content-container span),
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+nav,
+.sidebar,
+.menu,
+.button,
+.tabs,
+.navigation,
+.header,
+.footer,
+.title {
+    font-family: var(--content-font);
+    font-weight: var(--ui-font-weight);
+    // letter-spacing: 0.018em !important;
+}
+
+/* 代码块和内联代码的特殊字体处理 */
+pre,
+pre *,
+code,
+.markdown-body pre,
+.markdown-body pre *,
+.markdown-body code {
+    font-family: var(--monospace-font), monospace !important;
+    font-weight: var(--monospace-font-weight);
+    -webkit-font-feature-settings:
+        "liga" 1,
+        "calt" 1,
+        "ss01" 1,
+        "ss02" 1,
+        "ss03" 1,
+        "zero" 1 !important;
+    font-feature-settings:
+        "liga" 1,
+        "calt" 1,
+        "ss01" 1,
+        "ss02" 1,
+        "ss03" 1,
+        "zero" 1 !important;
+    text-rendering: optimizeLegibility;
+}

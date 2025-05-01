@@ -81,20 +81,18 @@
   inset: -2px;
   border-radius: inherit;
   padding: 3px;
-  background: linear-gradient(90deg,
-      #ff6a01,
-      /* 爱马仕橙，原色：#d65f00 */
-      #f8c91c,
-      /* 那不勒斯黄，原色：#ffb800 */
-      #8a2be2,
-      /* 紫罗兰色，原色：#8a2be2 */
-      #f8c91c,
-      /* #ffb800 */
-      #ff6901
-      /* #d65e00 */
-    );
+  background: linear-gradient(
+    90deg,
+    #ff6a01,
+    /* 爱马仕橙，原色：#d65f00 */ #f8c91c,
+    /* 那不勒斯黄，原色：#ffb800 */ #8a2be2,
+    /* 紫罗兰色，原色：#8a2be2 */ #f8c91c,
+    /* #ffb800 */ #ff6901 /* #d65e00 */
+  );
   background-size: 200% 200%;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   animation: gradientFlow 4s linear infinite;
   opacity: 0;
@@ -159,8 +157,20 @@ code,
 .markdown-body code {
   font-family: var(--monospace-font), monospace !important;
   font-weight: var(--monospace-font-weight);
-  -webkit-font-feature-settings: "liga" 1, "calt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "zero" 1 !important;
-  font-feature-settings: "liga" 1, "calt" 1, "ss01" 1, "ss02" 1, "ss03" 1, "zero" 1 !important;
+  -webkit-font-feature-settings:
+    "liga" 1,
+    "calt" 1,
+    "ss01" 1,
+    "ss02" 1,
+    "ss03" 1,
+    "zero" 1 !important;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1,
+    "ss01" 1,
+    "ss02" 1,
+    "ss03" 1,
+    "zero" 1 !important;
   text-rendering: optimizeLegibility;
 }
 
@@ -182,7 +192,7 @@ textarea.form-control,
 }
 
 /* 内联代码样式 */
-:not(pre)>code {
+:not(pre) > code {
   padding: 0.1em 0.4em;
   border-radius: 6px;
   /* 增加圆角半径 */
@@ -193,7 +203,7 @@ textarea.form-control,
 
 /* 暗色模式下的内联代码 */
 body[theme-mode="dark"] {
-  :not(pre)>code {
+  :not(pre) > code {
     background: rgba(255, 255, 255, 0.15);
     /* 保持暗色模式背景 */
     border-radius: 6px;
@@ -239,7 +249,7 @@ body[theme-mode="dark"] #inputbar {
   box-shadow: 0 8px 32px -12px rgba(0, 0, 0, 0.25) !important;
 }
 
-body[theme-mode="dark"] :not(pre)>code {
+body[theme-mode="dark"] :not(pre) > code {
   background: rgba(255, 255, 255, 0.1);
 }
 
