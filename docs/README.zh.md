@@ -3,7 +3,8 @@
 <div style="text-align: center">
 中文 |
 <a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/README.md">English</a> |
-<a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.fr.md">Français</a>
+<a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.fr.md">Français</a> |
+<a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.ja.md">日本語</a>
 </div>
 
 ## 介绍
