@@ -7,7 +7,8 @@ English |
 </div>
 
 ## Introduction
-This is a theme tailored for Cherry Studio.
+This is a theme tailored for Cherry Studio, a desktop client that supports for multiple LLM providers, available on Windows, Mac and Linux. \
+For more information about Cherry Studio, check [here](https://github.com/CherryHQ/cherry-studio).
 
 ## How to USE
 1. (Recommended) Download Maple Mono NF CN from [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.2/MapleMono-NF-CN-unhinted.zip). If you do not like the font, the default fallback font should be `Fira Code`.

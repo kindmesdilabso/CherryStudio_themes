@@ -1,4 +1,4 @@
-# Maple Neon：Cherry Studio 的主题
+# Maple Neon：Cherry Studio 主题
 
 <div style="text-align: center">
 中文 |
@@ -7,7 +7,8 @@
 </div>
 
 ## 介绍
-这是专为 Cherry Studio 设计的主题。
+这是一款为Cherry Studio量身定制的主题，Cherry Studio是一款支持多个大语言模型供应商的桌面客户端，可在Windows、Mac和Linux系统上使用。
+如需了解更多关于Cherry Studio的信息，请查看[此处](https://github.com/CherryHQ/cherry-studio)。
 
 ## 使用方法
 1. (推荐) 下载 [Maple 字体](https://github.com/subframe7536/maple-font/releases/download/v7.2/MapleMono-NF-CN-unhinted.zip)。如果你不喜欢该字体，默认的备用字体应为`Fira Code`。

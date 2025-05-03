@@ -7,7 +7,8 @@ Français
 </div>
 
 ## Introduction
-C'est un thème conçu pour Cherry Studio.
+Ceci est un thème conçu pour Cherry Studio, un client de bureau qui prend en charge plusieurs fournisseurs de modèles de langage (LLM) et est disponible sur Windows, Mac et Linux. \
+Pour plus d'informations sur Cherry Studio, consultez [ici](https://github.com/CherryHQ/cherry-studio).
 
 ## Comment utiliser
 1. (Recommandé) Téléchargez [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.2/MapleMono-NF-CN-unhinted.zip). Si vous n'aimez pas la police d'écriture, la police de secours par défaut devrait être celle de `Fira Code`.
