@@ -8,9 +8,14 @@
     --monospace-font: "Maple Mono NF CN", "Fira Code", monospace !important;
     --monospace-font-weight: normal;
 
-    --content-font: "HarmonyOS Sans", "HarmonyOS Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif !important;
+    --content-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans SC", system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif !important;
     --content-font-weight: normal;
+
+    --title-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Serif", "Noto Serif SC", "Microsoft Sans", serif,
+        system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    --title-font-weight: bold;
+
     --ui-font-weight: bold;
 
     // --input-gradient-opacity: 1;
@@ -89,9 +94,22 @@ nav,
 .header,
 .footer,
 .title {
+    font-family: var(--title-font);
+    font-weight: var(--title-font-weight);
+}
+
+/* 消息内容和输入区域 */
+.message-content-container,
+.message-content-container *,
+p,
+li,
+ul,
+ol,
+.form-control,
+#inputbox,
+textarea {
     font-family: var(--content-font);
-    font-weight: var(--ui-font-weight);
-    // letter-spacing: 0.018em !important;
+    font-weight: var(--content-font-weight);
 }
 
 /* 代码块和内联代码的特殊字体处理 */
