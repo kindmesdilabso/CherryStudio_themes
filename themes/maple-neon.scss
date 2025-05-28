@@ -121,15 +121,12 @@ body[theme-mode="light"] {
     mask:
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
+    -webkit-mask-composite: destination-out; /* 兼容旧版 WebKit 内核浏览器 */
     mask-composite: exclude;
     animation: gradientFlow 4s linear infinite;
     opacity: 0;
     transition: all 0.4s ease-in-out;
     pointer-events: auto;
-}
-
-#inputbar:focus-within {
-    /* 移除可能导致闪烁的 blinking 动画 */
 }
 
 #inputbar:focus-within::before {
