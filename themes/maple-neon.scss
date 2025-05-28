@@ -1,113 +1,142 @@
 /* Maple Neon Theme */
 
+/* 动画定义 */
+@keyframes clickAnimation {
+    0% {
+        transform: scale(1); /* 开始时大小为 1 */
+    }
+    30% {
+        transform: scale(0.9);
+    }
+    60% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1); /* 最后恢复到原始大小 */
+    }
+}
+
+@keyframes page-popup-right {
+    from {
+        transform: translateX(-2em);
+        opacity: 0%;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes page-popup-left {
+    from {
+        transform: translateX(2em);
+        opacity: 0%;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 100%;
+    }
+}
+
 /* 基础变量定义 */
 :root {
-  --chat-background-assistant: #fff;
-  --color-border: rgba(120, 120, 120, 0.08) !important;
+    //   --chat-background-assistant: #fff;
+    //   --color-border: rgba(120, 120, 120, 0.08) !important;
 
-  --monospace-font: "Maple Mono NF CN", "Fira Code", monospace !important;
-  --monospace-font-weight: normal;
+    /* --- 动画相关变量 --- */
+    --animation: cubic-bezier(0.25, 0.1, 0.25, 1.0); /* 调整为更快的 ease-out */
+    --short-timer: 0.15s; /* 缩短时间 */
+    --long-timer: 0.3s;  /* 缩短时间 */
+    --button-border-radius: 12px;
+    --button-border-radius-hover: 8px;
+    --button-border-radius-active: 12px;
 
-  --content-font: "HarmonyOS Sans SC", "HarmonyOS Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif !important;
-  --content-font-weight: normal;
-  --ui-font-weight: bold;
-  --input-gradient-opacity: 1;
+    /* --- 字体规范对齐 --- */
+    /* 基础字体 (对应规范中的 --font-family) */
+    --content-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial,
+        "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+    --content-font-weight: normal;
 
-  --box-shadow-message: 0 4px 16px -8px rgba(0, 0, 0, 0.04);
-  --border-radius-message: 16px;
+    /* 标题/UI 字体 (对应规范中的 --font-family-serif, 但这里保持无衬线优先) */
+    --title-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
+        BlinkMacSystemFont, "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
+        serif, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+    --title-font-weight: bold;
+
+    /* 代码字体 (对应规范中的 --code-font-family) */
+    --monospace-font: "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
+    --monospace-font-weight: normal;
+
+    --ui-font-weight: bold; /* 保留UI元素的特定粗细控制 */
+
+    // --input-gradient-opacity: 1;
+
+    //   --box-shadow-message: 0 4px 16px -8px rgba(0, 0, 0, 0.04);
+    //   --border-radius-message: 16px;
 }
 
-/* 消息容器样式 */
-.message-content-container {
-  background: var(--chat-background-assistant) !important;
-  box-shadow: var(--box-shadow-message) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: var(--border-radius-message) !important;
-  margin: 8px 0 !important;
-  padding: 12px 14px 2px 14px !important;
-  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+/* --- 浅色模式输入栏文本及光标颜色修复 --- */
+body[theme-mode="light"] {
+    #inputbar input,
+    #inputbar textarea,
+    #inputbox,
+    .form-control {
+        color: var(--color-text) !important; /* 使用规范中定义的浅色模式文本颜色 */
+        caret-color: var(--color-text) !important; /* 使用规范中定义的浅色模式文本颜色作为光标颜色 */
+    }
 }
 
-.message-user .message-content-container {
-  background: #f5f5f5 !important;
-  box-shadow: 0 8px 28px -12px rgba(0, 0, 0, 0.05) !important;
-}
-
+/* 消息容器样式：增加霓虹AI助手效果 */
 /* 输入框动画效果 */
 @keyframes gradientFlow {
-  0% {
-    background-position: 0 50%;
-  }
+    0% {
+        background-position: 0 50%;
+    }
 
-  50% {
-    background-position: 100% 50%;
-  }
+    50% {
+        background-position: 100% 50%;
+    }
 
-  100% {
-    background-position: 0 50%;
-  }
-}
-
-@keyframes subtleBlinking {
-  0% {
-    filter: drop-shadow(rgba(33, 150, 243, 0.3) 0px 0px 2px);
-  }
-
-  50% {
-    filter: drop-shadow(rgba(255, 165, 0, 0.3) 0px 0px 5px);
-  }
-
-  100% {
-    filter: drop-shadow(rgba(33, 150, 243, 0.3) 0px 0px 2px);
-  }
-}
-
-/* 输入框样式 */
-[theme-mode="dark"] #inputbar:focus-within::before {
-  opacity: 0.5 !important;
-}
-
-#inputbar {
-  z-index: 1;
-  position: relative;
-  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.06) !important;
-  margin: 0 15px 15px 15px !important;
+    100% {
+        background-position: 0 50%;
+    }
 }
 
 #inputbar::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  padding: 3px;
-  background: linear-gradient(
-    90deg,
-    #ff6a01,
-    /* 爱马仕橙，原色：#d65f00 */ #f8c91c,
-    /* 那不勒斯黄，原色：#ffb800 */ #8a2be2,
-    /* 紫罗兰色，原色：#8a2be2 */ #f8c91c,
-    /* #ffb800 */ #ff6901 /* #d65e00 */
-  );
-  background-size: 200% 200%;
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  animation: gradientFlow 4s linear infinite;
-  opacity: 0;
-  transition: all 0.4s ease-in-out;
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 3px;
+    background: linear-gradient(
+        90deg,
+        #ff6a01,
+        /* 爱马仕橙，原色：#d65f00 */ #f8c91c,
+        /* 那不勒斯黄，原色：#ffb800 */ #8a2be2,
+        /* 紫罗兰色，原色：#8a2be2 */ #f8c91c,
+        /* #ffb800 */ #ff6901 /* #d65e00 */
+    );
+    background-size: 200% 200%;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: gradientFlow 4s linear infinite;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    pointer-events: auto;
 }
 
 #inputbar:focus-within {
-  animation: blinking 4s linear infinite;
+    /* 移除可能导致闪烁的 blinking 动画 */
 }
 
 #inputbar:focus-within::before {
-  opacity: 1;
+    opacity: 1;
 }
 
+/* 字体样式更改 */
 /* UI元素使用粗体 */
 body,
 div:not(.message-content-container),
@@ -128,12 +157,11 @@ nav,
 .header,
 .footer,
 .title {
-  font-family: var(--content-font), sans-serif;
-  font-weight: var(--ui-font-weight);
-  // letter-spacing: 0.018em !important;
+    font-family: var(--title-font);
+    font-weight: var(--title-font-weight);
 }
 
-/* 消息内容和输入区域正常字重 */
+/* 消息内容和输入区域 */
 .message-content-container,
 .message-content-container *,
 p,
@@ -143,9 +171,8 @@ ol,
 .form-control,
 #inputbox,
 textarea {
-  font-family: var(--content-font), system-ui;
-  font-weight: var(--content-font-weight);
-  letter-spacing: 0.018em !important;
+    font-family: var(--content-font);
+    font-weight: var(--content-font-weight);
 }
 
 /* 代码块和内联代码的特殊字体处理 */
@@ -155,115 +182,153 @@ code,
 .markdown-body pre,
 .markdown-body pre *,
 .markdown-body code {
-  font-family: var(--monospace-font), monospace !important;
-  font-weight: var(--monospace-font-weight);
-  -webkit-font-feature-settings:
-    "liga" 1,
-    "calt" 1,
-    "ss01" 1,
-    "ss02" 1,
-    "ss03" 1,
-    "zero" 1 !important;
-  font-feature-settings:
-    "liga" 1,
-    "calt" 1,
-    "ss01" 1,
-    "ss02" 1,
-    "ss03" 1,
-    "zero" 1 !important;
-  text-rendering: optimizeLegibility;
+    font-family: var(--monospace-font), monospace !important;
+    font-weight: var(--monospace-font-weight);
+    -webkit-font-feature-settings:
+        "liga" 1,
+        "calt" 1,
+        "ss01" 1,
+        "ss02" 1,
+        "ss03" 1,
+        "zero" 1 !important;
+    font-feature-settings:
+        "liga" 1,
+        "calt" 1,
+        "ss01" 1,
+        "ss02" 1,
+        "ss03" 1,
+        "zero" 1 !important;
+    text-rendering: optimizeLegibility;
 }
 
-/* 确保代码输入区也使用等宽字体 */
-textarea.form-control,
-#inputbox {
-  font-family: var(--monospace-font), system-ui !important;
+/* --- 动画应用 --- */
+[class^="MessageLineContainer"] {
+    /* background: var(--chat-background); */ /* 保持 Maple Neon 原有背景 */
+    border-radius: var(--button-border-radius);
+
+    [class^="MessageItem"]:active {
+        animation: clickAnimation var(--long-timer) var(--animation);
+    }
 }
 
-/* 代码块样式优化 */
-.markdown-body pre {
-  border-radius: 8px;
-  margin: 16px 0;
+[class^="SettingHelpTextRow"] {
+    display: inline-block;
 }
 
-.markdown-body pre code {
-  font-size: 0.92em;
-  padding: 0.8em;
+[class^="Icon"]:hover,
+[class^="ant"]:hover,
+[class^="ActionButton"]:hover,
+[class^="TopicListItem"]:hover,
+[class^="ProviderListItem"]:hover,
+[class^="MenuItem"]:hover,
+[class^="MenuButton"]:hover,
+[class^="EmojiBackground"]:hover {
+    border-radius: var(--button-border-radius-hover) !important;
+    transition: border-radius var(--short-timer) var(--animation);
 }
 
-/* 内联代码样式 */
-:not(pre) > code {
-  padding: 0.1em 0.4em;
-  border-radius: 6px;
-  /* 增加圆角半径 */
-  font-size: 0.9em;
-  background: rgba(0, 0, 0, 0.04);
-  font-family: var(--monospace-font) !important;
+[class^="IconItem"]:active,
+[class^="ant-avatar"]:active,
+[class^="ant-btn"]:active,
+[class^="ant-segmented-item"]:active,
+[class^="anticon"]:active,
+[class^="ant-upload"]:active,
+[class^="ant-divider"]:active,
+[class^="ant-tooltip"]:active,
+[class^="ant-message"]:active,
+[class^="ActionButton"]:active,
+[class^="TopicListItem"]:active,
+[class^="ProviderListItem"]:active,
+[class^="MenuItem"]:active,
+[class^="MenuButton"]:active,
+[class^="EmojiBackground"]:active,
+[class~="ant-dropdown-menu-item"]:active,
+[class~="ant-dropdown-menu-submenu-title"]:active,
+[class~="ant-select-selector"]:active,
+[class~="ant-select-item"]:active {
+    border-radius: var(--button-border-radius-active) !important;
+    transition: border-radius var(--short-timer) var(--animation);
+    animation: clickAnimation var(--long-timer) var(--animation);
 }
 
-/* 暗色模式下的内联代码 */
+/* Adapted to v1.2.8 */
+[class^="Menus"] {
+    [class^="Icon"]:active {
+        border-radius: var(--button-border-radius-active) !important;
+        transition: border-radius var(--short-timer) var(--animation);
+        animation: clickAnimation var(--long-timer) var(--animation);
+    }
+}
+
+[class^="Icon"],
+[class^="ant"],
+[class^="ActionButton"],
+[class^="TopicListItem"],
+[class^="ProviderListItem"],
+[class^="MenuItem"],
+[class^="MenuButton"],
+[class^="EmojiBackground"] {
+    border-radius: var(--button-border-radius) !important;
+}
+
+[class^="ant-switch"] {
+    border-radius: 100px !important;
+}
+
+/* 保持 Maple Neon 原有背景色定义 */
+/* body[theme-mode="light"] {
+    background-color: var(--background-light-new);
+}
+
 body[theme-mode="dark"] {
-  :not(pre) > code {
-    background: rgba(255, 255, 255, 0.15);
-    /* 保持暗色模式背景 */
-    border-radius: 6px;
-    /* 确保暗色模式也有相同圆角 */
-  }
+    background-color: var(--background-dark-new) !important;
+} */
+
+/* 保持 Maple Neon 原有 hover 效果 */
+/* [theme-mode="light"] .bubble .message-user .message-action-button:hover {
+    background-color: var(--button-hover-light) !important;
 }
 
-/* 亮色模式设置 */
-body[theme-mode="light"] {
-  --color-primary: #1b579c; // 卡布里蓝，原色：#3f6ec8
-  --color-primary-soft: #0077be; // 海浪蓝，原色：#5b87df
-  --color-primary-mute: #002fa7; // 克莱茵蓝，原色：#013153
-  --input-gradient-opacity: 0.3;
+[theme-mode="dark"] .bubble .message-user .message-action-button:hover {
+    background-color: var(--button-hover-dark) !important;
+} */
+
+[theme-mode="light"] button.ant-btn:hover,
+[theme-mode="dark"] button.ant-btn:hover {
+    border-radius: var(--button-border-radius) !important; /* pulse.scss 中是 --button-border-radius，保持一致 */
 }
 
-/* 暗色模式设置 */
-body[theme-mode="dark"] {
-  --color-primary: #2775b6; // 景泰蓝，原色：#5b87df
-  --color-primary-soft: #346c9c; // 海军蓝，原色：#3f6ec8
-  --color-primary-mute: #0f52ba; // 宝石蓝，原色：#2a4b87
-  --color-border: rgba(255, 255, 255, 0.1);
-  --chat-background-assistant: #1e1e24;
-  --chat-text-user: #edeef0;
-  --color-text: #edeef0;
-  --box-shadow-message: 0 4px 16px -8px rgba(0, 0, 0, 0.4);
-  --input-gradient-opacity: 0.6;
+/* 保持 Maple Neon 原有 input 背景 */
+/* [theme-mode="light"] [class^="ant-input"],
+[theme-mode="light"] button.ant-btn-variant-outlined {
+    background-color: var(--input-bg-light) !important;
 }
 
-body[theme-mode="dark"] .message-content-container {
-  background: var(--chat-background-assistant) !important;
-  box-shadow: var(--box-shadow-message) !important;
-  border: 1px solid var(--color-border) !important;
+[theme-mode="dark"] [class^="ant-input"],
+[theme-mode="dark"] button.ant-btn-variant-outlined {
+    background-color: var(--input-bg-dark) !important;
+} */
+
+[class$="-tabs-content"],
+[class$="-tab"],
+[id^="content-container"],
+[class^="MessageContainer"],
+[class^="SettingContent"],
+[class^="SettingContainer"],
+[class^="SettingGroup"],
+[class^="MenuList"],
+[class^="ProviderList"],
+[class^="Main"],
+[class~="message-assistant"] {
+    animation: page-popup-right var(--short-timer) var(--animation);
 }
 
-body[theme-mode="dark"] .message-user .message-content-container {
-  background: #252530 !important;
-  box-shadow: 0 8px 32px -12px rgba(0, 0, 0, 0.25) !important;
+[class~="message-user"] {
+    animation: page-popup-left var(--short-timer) var(--animation);
 }
 
-body[theme-mode="dark"] #inputbar {
-  background: rgba(30, 30, 36, 0.96) !important;
-  border: 1px solid var(--color-border) !important;
-  box-shadow: 0 8px 32px -12px rgba(0, 0, 0, 0.25) !important;
-}
-
-body[theme-mode="dark"] :not(pre) > code {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* 确保语法高亮清晰可辨 */
-body[theme-mode="dark"] .markdown-body pre {
-  background-color: #262633 !important;
-}
-
-/* Bug fixes */
-.bubble .message-user .message-action-button:hover {
-  background-color: var(--color-background-mute);
-}
-
-/* 输入区域内的字体处理 */
-.form-control {
-  font-family: var(--content-font), system-ui !important;
-}
+/* Bug fixes from pulse.scss - 检查是否与 Maple Neon 冲突 */
+/* .bubble .message-user .message-action-button:hover {
+    background-color: var(--color-background-mute); 
+} */
+/* 保持 Maple Neon 原有 hover 效果，避免潜在冲突 */
