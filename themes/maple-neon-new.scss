@@ -1,0 +1,402 @@
+/* 
+ * Maple Neon Theme - 霓虹风格主题样式表
+ * 该主题提供了丰富的动画效果和现代化的UI设计
+ */
+
+/* ==================== 动画定义 ==================== */
+
+/* 点击动画效果 - 用于按钮等交互元素的点击反馈 */
+@keyframes clickAnimation {
+    0% {
+        opacity: 1;
+        /* 初始状态完全不透明 */
+    }
+
+    50% {
+        opacity: 0.7;
+        /* 点击时透明度降低，提供视觉反馈 */
+    }
+
+    100% {
+        opacity: 1;
+        /* 恢复完全不透明 */
+    }
+}
+
+/* 从右侧弹出的页面元素动画 */
+@keyframes page-popup-right {
+    from {
+        transform: translateX(-2em);
+        /* 从左侧2em位置开始 */
+        opacity: 0%;
+        /* 初始完全透明 */
+    }
+
+    to {
+        transform: translateX(0);
+        /* 移动到正常位置 */
+        opacity: 100%;
+        /* 完全不透明 */
+    }
+}
+
+/* 从左侧弹出的页面元素动画 */
+@keyframes page-popup-left {
+    from {
+        transform: translateX(2em);
+        /* 从右侧2em位置开始 */
+        opacity: 0%;
+        /* 初始完全透明 */
+    }
+
+    to {
+        transform: translateX(0);
+        /* 移动到正常位置 */
+        opacity: 100%;
+        /* 完全不透明 */
+    }
+}
+
+/* ==================== 基础变量定义 ==================== */
+:root {
+    //   --chat-background-assistant: #fff;
+    //   --color-border: rgba(120, 120, 120, 0.08) !important;
+
+    /* --- 动画相关变量 --- */
+    --animation: cubic-bezier(0.25, 0.1, 0.25, 1);
+    /* 自定义缓动函数，提供更快的ease-out效果 */
+    --short-timer: 0.15s;
+    /* 短动画持续时间 */
+    --long-timer: 0.3s;
+    /* 长动画持续时间 */
+    --button-border-radius: 10px;
+    /* 按钮默认圆角 */
+    --button-border-radius-hover: 10px;
+    /* 鼠标悬停时按钮圆角 */
+    --button-border-radius-active: 10px;
+    /* 按钮激活状态圆角 */
+
+    /* --- 字体规范 --- */
+    /* 内容字体 - 用于普通文本内容 */
+    --content-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial,
+        "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+    --content-font-weight: normal;
+    /* 内容字体粗细 */
+
+    /* 标题字体 - 用于标题和UI元素 */
+    --title-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
+        BlinkMacSystemFont, "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
+        serif, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+    --title-font-weight: bold;
+    /* 标题字体粗细 */
+
+    /* 等宽字体 - 用于代码块和内联代码 */
+    --monospace-font: "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
+    --monospace-font-weight: normal;
+    /* 代码字体粗细 */
+
+    --ui-font-weight: bold;
+    /* UI元素的特定粗细控制 */
+}
+
+/* ==================== 浅色模式输入栏样式修复 ==================== */
+body[theme-mode="light"] {
+
+    /* 统一浅色模式下输入框和文本区域的样式 */
+    #inputbar input,
+    #inputbar textarea,
+    #inputbox,
+    .form-control {
+        color: var(--color-text) !important;
+        /* 使用主题定义的文本颜色 */
+        caret-color: var(--color-text) !important;
+        /* 光标颜色与文本颜色一致 */
+    }
+}
+
+/* ==================== 输入栏霓虹效果 ==================== */
+/* 输入栏背景流动渐变动画 */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0 50%;
+        /* 渐变起始位置 */
+    }
+
+    50% {
+        background-position: 100% 50%;
+        /* 渐变中间位置 */
+    }
+
+    100% {
+        background-position: 0 50%;
+        /* 渐变结束位置 */
+    }
+}
+
+/* 输入栏霓虹边框效果 */
+#inputbar::before {
+    content: "";
+    /* 伪元素内容为空 */
+    position: absolute;
+    /* 绝对定位 */
+    inset: -3px;
+    /* 向外扩展2px */
+    border-radius: inherit;
+    /* 继承父元素圆角 */
+    padding: 3px;
+    /* 内边距 */
+    /* 霓虹渐变背景 */
+    background: linear-gradient(90deg,
+            #ff6a01,
+            /* 爱马仕橙 */
+            #f8c91c,
+            /* 那不勒斯黄 */
+            #8a2be2,
+            /* 紫罗兰色 */
+            #f8c91c,
+            /* 那不勒斯黄 */
+            #ff6901
+            /* 爱马仕橙 */
+        );
+    background-size: 200% 200%;
+    /* 扩大背景尺寸以实现动画效果 */
+    /* 使用mask创建边框效果 */
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: destination-out;
+    /* 兼容旧版WebKit */
+    mask-composite: exclude;
+    /* 排除重叠部分 */
+    animation: gradientFlow 4s linear infinite;
+    /* 应用渐变流动动画 */
+    opacity: 0;
+    /* 初始不可见 */
+    transition: all 0.4s ease-in-out;
+    /* 平滑过渡效果 */
+    pointer-events: auto;
+    /* 允许鼠标事件 */
+}
+
+/* 输入栏获得焦点时显示霓虹效果 */
+#inputbar:focus-within::before {
+    opacity: 1;
+    /* 完全可见 */
+}
+
+/* ==================== 字体样式 ==================== */
+
+/* UI元素使用标题字体 */
+body,
+div:not(.message-content-container),
+span:not(.message-content-container span),
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+nav,
+.sidebar,
+.menu,
+.button,
+.tabs,
+.navigation,
+.header,
+.footer,
+.title {
+    font-family: var(--title-font);
+    /* 使用标题字体 */
+    font-weight: var(--title-font-weight);
+    /* 使用标题字体粗细 */
+}
+
+/* 消息内容和输入区域使用内容字体 */
+.message-content-container,
+.message-content-container *,
+p,
+li,
+ul,
+ol,
+.form-control,
+#inputbox,
+textarea {
+    font-family: var(--content-font);
+    /* 使用内容字体 */
+    font-weight: var(--content-font-weight);
+    /* 使用内容字体粗细 */
+}
+
+/* 代码块和内联代码的特殊处理 */
+pre,
+pre *,
+code,
+.markdown-body pre,
+.markdown-body pre *,
+.markdown-body code {
+    font-family: var(--monospace-font), monospace !important;
+    /* 使用等宽字体 */
+    font-weight: var(--monospace-font-weight);
+    /* 使用代码字体粗细 */
+    /* 字体特性设置 */
+    -webkit-font-feature-settings:
+        "liga" 1,
+        "calt" 1,
+        "ss01" 1,
+        "ss02" 1,
+        "ss03" 1,
+        "zero" 1 !important;
+    font-feature-settings:
+        "liga" 1,
+        "calt" 1,
+        "ss01" 1,
+        "ss02" 1,
+        "ss03" 1,
+        "zero" 1 !important;
+    text-rendering: optimizeLegibility;
+    /* 优化文本渲染 */
+}
+
+/* ==================== 动画应用 ==================== */
+
+/* 消息行容器动画 */
+[class^="MessageLineContainer"] {
+    /* 保留原有背景注释 */
+    border-radius: var(--button-border-radius);
+    /* 应用圆角 */
+
+    /* 消息项点击动画 */
+    [class^="MessageItem"]:active {
+        animation: clickAnimation var(--long-timer) var(--animation);
+    }
+}
+
+/* 设置帮助文本行样式 */
+[class^="SettingHelpTextRow"] {
+    display: inline-block;
+    /* 行内块显示 */
+}
+
+/* 鼠标悬停时的圆角过渡效果 */
+[class^="Icon"]:hover,
+[class^="ant"]:hover,
+[class^="ActionButton"]:hover,
+[class^="TopicListItem"]:hover,
+[class^="ProviderListItem"]:hover,
+[class^="MenuItem"]:hover,
+[class^="MenuButton"]:hover,
+[class^="EmojiBackground"]:hover {
+    border-radius: var(--button-border-radius-hover) !important;
+    /* 悬停圆角 */
+    transition: border-radius var(--short-timer) var(--animation);
+    /* 平滑过渡 */
+}
+
+/* 激活状态的动画和样式 */
+[class^="IconItem"]:active,
+[class^="ant-avatar"]:active,
+[class^="ant-btn"]:active,
+[class^="ant-segmented-item"]:active,
+[class^="anticon"]:active,
+[class^="ant-upload"]:active,
+[class^="ant-divider"]:active,
+[class^="ant-tooltip"]:active,
+[class^="ant-message"]:active,
+[class^="ActionButton"]:active,
+[class^="TopicListItem"]:active,
+[class^="ProviderListItem"]:active,
+[class^="MenuItem"]:active,
+[class^="MenuButton"]:active,
+[class^="EmojiBackground"]:active,
+[class~="ant-dropdown-menu-item"]:active,
+[class~="ant-dropdown-menu-submenu-title"]:active,
+[class~="ant-select-selector"]:active,
+[class~="ant-select-item"]:active {
+    border-radius: var(--button-border-radius-active) !important;
+    /* 激活圆角 */
+    transition: border-radius var(--short-timer) var(--animation);
+    /* 圆角过渡 */
+    animation: clickAnimation var(--long-timer) var(--animation);
+    /* 点击动画 */
+}
+
+/* 菜单项激活状态适配v1.2.8 */
+[class^="Menus"] {
+    [class^="Icon"]:active {
+        border-radius: var(--button-border-radius-active) !important;
+        transition: border-radius var(--short-timer) var(--animation);
+        animation: clickAnimation var(--long-timer) var(--animation);
+    }
+}
+
+/* 默认圆角设置 */
+[class^="Icon"],
+[class^="ant"],
+[class^="ActionButton"],
+[class^="TopicListItem"],
+[class^="ProviderListItem"],
+[class^="MenuItem"],
+[class^="MenuButton"],
+[class^="EmojiBackground"] {
+    border-radius: var(--button-border-radius) !important;
+}
+
+/* 开关特殊圆角 */
+[class^="ant-switch"] {
+    border-radius: 100px !important;
+    /* 完全圆形 */
+}
+
+/* 按钮悬停效果 */
+[theme-mode="light"] button.ant-btn:hover,
+[theme-mode="dark"] button.ant-btn:hover {
+    border-radius: var(--button-border-radius) !important;
+}
+
+/* 页面元素弹出动画 */
+[class$="-tabs-content"],
+[class$="-tab"],
+[id^="content-container"],
+[class^="MessageContainer"],
+[class^="SettingContent"],
+[class^="SettingContainer"],
+[class^="SettingGroup"],
+[class^="MenuList"],
+[class^="ProviderList"],
+[class^="Main"],
+[class~="message-assistant"] {
+    animation: page-popup-right var(--short-timer) var(--animation);
+    /* 从右侧弹出 */
+}
+
+/* 用户消息从左侧弹出 */
+[class~="message-user"] {
+    animation: page-popup-left var(--short-timer) var(--animation);
+}
+
+/* 保留原有注释的冲突检查部分 */
+
+/* 亮色模式 */
+body[theme-mode='light'] {
+    --mt-background: #ffffff;
+    --chat-background-user: var(--mt-background);
+}
+
+/* 暗色模式 */
+body[theme-mode="dark"] {
+    --color-background: #1F2428;
+    --color-background-soft: #353B41;
+    --color-background-mute: #242A2E;
+    --navbar-background: #1F2428;
+    --chat-background: #1F2428;
+    --chat-background-user: #2c2c2c;
+    --chat-background-assistant: #2c2c2c;
+    --chat-text-user: #e2e2e2;
+}
+
+/* Bug fixes */
+.bubble .message-user .message-action-button:hover {
+    background-color: var(--color-background-mute);
+}
