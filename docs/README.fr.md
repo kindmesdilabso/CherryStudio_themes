@@ -1,6 +1,7 @@
 # Maple Neon : Un thème pour Cherry Studio
 ![Free Palestine](https://freepalestinemovement.org/wp-content/uploads/2013/06/banner.jpg)
 ![Static Badge](https://img.shields.io/badge/License-MIT-blue)
+![Static Badge](https://img.shields.io/badge/Language-SCSS-pink)
 <div style="text-align: center">
 <a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.zh.md">中文</a> | 
 <a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/README.md">English</a> |
