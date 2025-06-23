@@ -1,5 +1,6 @@
 # Maple Neon：Cherry Studio 主题
-
+![Free Palestine](https://freepalestinemovement.org/wp-content/uploads/2013/06/banner.jpg)
+![Static Badge](https://img.shields.io/badge/License-MIT-blue)
 <div style="text-align: center">
 中文 |
 <a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/README.md">English</a> |
