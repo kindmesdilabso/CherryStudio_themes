@@ -16,7 +16,7 @@
 @keyframes page-popup-right {
     from {
         transform: translateX(-2em);
-        opacity: 0%;
+        opacity: 0;
     }
     to {
         transform: translateX(0);
@@ -27,7 +27,7 @@
 @keyframes page-popup-left {
     from {
         transform: translateX(2em);
-        opacity: 0%;
+        opacity: 0;
     }
     to {
         transform: translateX(0);
@@ -51,14 +51,14 @@
     /* --- 字体规范对齐 --- */
     /* 基础字体 (对应规范中的 --font-family) */
     --content-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
-        BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial,
-        "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+    BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --content-font-weight: normal;
 
     /* 标题/UI 字体 (对应规范中的 --font-family-serif, 但这里保持无衬线优先) */
     --title-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
-        BlinkMacSystemFont, "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
-        serif, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+    BlinkMacSystemFont, "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
+    serif, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --title-font-weight: bold;
 
     /* 代码字体 (对应规范中的 --code-font-family) */
@@ -107,17 +107,17 @@ body[theme-mode="light"] {
     border-radius: inherit;
     padding: 3px;
     background: linear-gradient(
-        90deg,
-        #ff6a01,
-        /* 爱马仕橙，原色：#d65f00 */ #f8c91c,
-        /* 那不勒斯黄，原色：#ffb800 */ #8a2be2,
-        /* 紫罗兰色，原色：#8a2be2 */ #f8c91c,
-        /* #ffb800 */ #ff6901 /* #d65e00 */
+                    90deg,
+                    #ff6a01,
+                /* 爱马仕橙，原色：#d65f00 */ #f8c91c,
+                /* 那不勒斯黄，原色：#ffb800 */ #8a2be2,
+                /* 紫罗兰色，原色：#8a2be2 */ #f8c91c,
+                /* #ffb800 */ #ff6901 /* #d65e00 */
     );
     background-size: 200% 200%;
     mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
     -webkit-mask-composite: destination-out; /* 兼容旧版 WebKit 内核浏览器 */
     mask-composite: exclude;
     animation: gradientFlow 4s linear infinite;
@@ -151,7 +151,7 @@ nav,
 .header,
 .footer,
 .title {
-    font-family: var(--title-font);
+    font-family: var(--title-font), sans-serif;
     font-weight: var(--title-font-weight);
 }
 
@@ -165,7 +165,7 @@ ol,
 .form-control,
 #inputbox,
 textarea {
-    font-family: var(--content-font);
+    font-family: var(--content-font), sans-serif;
     font-weight: var(--content-font-weight);
 }
 
@@ -179,19 +179,19 @@ code,
     font-family: var(--monospace-font), monospace !important;
     font-weight: var(--monospace-font-weight);
     -webkit-font-feature-settings:
-        "liga" 1,
-        "calt" 1,
-        "ss01" 1,
-        "ss02" 1,
-        "ss03" 1,
-        "zero" 1 !important;
+            "liga" 1,
+            "calt" 1,
+            "ss01" 1,
+            "ss02" 1,
+            "ss03" 1,
+            "zero" 1 !important;
     font-feature-settings:
-        "liga" 1,
-        "calt" 1,
-        "ss01" 1,
-        "ss02" 1,
-        "ss03" 1,
-        "zero" 1 !important;
+            "liga" 1,
+            "calt" 1,
+            "ss01" 1,
+            "ss02" 1,
+            "ss03" 1,
+            "zero" 1 !important;
     text-rendering: optimizeLegibility;
 }
 
@@ -323,6 +323,6 @@ body[theme-mode="dark"] {
 
 /* Bug fixes from pulse.scss - 检查是否与 Maple Neon 冲突 */
 /* .bubble .message-user .message-action-button:hover {
-    background-color: var(--color-background-mute); 
+    background-color: var(--color-background-mute);
 } */
 /* 保持 Maple Neon 原有 hover 效果，避免潜在冲突 */
