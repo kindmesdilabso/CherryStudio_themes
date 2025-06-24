@@ -1,9 +1,9 @@
 # Maple Neon：Cherry Studio 主题
 ![Free Palestine](https://freepalestinemovement.org/wp-content/uploads/2013/06/banner.jpg)
 ![Cherry Studio](https://www.cherry-ai.com/assets/cherry-logo-CtmH594q.svg)
-![Static Badge](https://img.shields.io/badge/Tailored_for-Cherry_Studio-red)
+![Static Badge](https://img.shields.io/badge/Tailored_for-Cherry_Studio-red?logo=Github)
 ![Static Badge](https://img.shields.io/badge/License-MIT-blue)
-![Static Badge](https://img.shields.io/badge/Language-SCSS-pink)
+![Static Badge](https://img.shields.io/badge/Language-SCSS-pink?logo=css)
 ![Static Badge](https://img.shields.io/badge/Release-v1.1.0-green)
 <div style="text-align: center">
 中文 |
