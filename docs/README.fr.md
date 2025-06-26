@@ -18,7 +18,7 @@ Ceci est un thème conçu pour Cherry Studio, un client de bureau qui prend en c
 Pour plus d'informations sur Cherry Studio, consultez [ici](https://github.com/CherryHQ/cherry-studio).
 
 ## Comment utiliser
-1. (Recommandé mais pas obligatoire) Téléchargez [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.2/MapleMono-NF-CN-unhinted.zip). Si vous n'aimez pas la police d'écriture, la police de secours par défaut devrait être celle de `Fira Code`.
+1. (Recommandé mais pas obligatoire) Téléchargez [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip). Si vous n'aimez pas la police d'écriture, la police de secours par défaut devrait être celle de `Fira Code`.
 2. (Recommandé mais pas obligatoire) Téléchargez Harmony OS Sans depuis [Harmony OS Sans](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip). Si vous n'aimez pas la police d'écriture, la police de secours par défaut devrait être celle de l'interface utilisateur de votre système.
 3. Copiez le contenu du fichier [maple-neon.scss](../themes/maple-neon.scss) (pour la version d'origine) ou téléchargez le fichier brut (pour la personnalisation).
 4. Colliez-le dans Cherry Studio.

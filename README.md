@@ -18,7 +18,7 @@ This is a theme tailored for Cherry Studio, a desktop client that supports for m
 For more information about Cherry Studio, check [here](https://github.com/CherryHQ/cherry-studio).
 
 ## How to USE
-1. (Recommended but not necessary) Download Maple Mono NF CN from [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.2/MapleMono-NF-CN-unhinted.zip). If you do not like the font, the default fallback font should be `Fira Code`.
+1. (Recommended but not necessary) Download Maple Mono NF CN from [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip). If you do not like the font, the default fallback font should be `Fira Code`.
 2. (Recommended but not necessary) Download Harmony OS Sans from [Harmony OS Sans](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip). If you do not like the font, the default fallback font should be the font of your system UI.
 3. Copy the content in [maple-neon.scss](./themes/maple-neon.scss) file(for original version) or download the raw file(for customization).
 4. Paste it into Cherry Studio.
