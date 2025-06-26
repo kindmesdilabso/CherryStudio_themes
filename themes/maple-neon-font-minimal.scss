@@ -1,4 +1,4 @@
-/* Maple Neon Theme: Complete Version of Maple Neon */
+/* Maple Neon Theme Font Minimal: A Maple Neon theme version that only specifies the font */
 
 /* 动画定义 */
 @keyframes clickAnimation {
@@ -71,17 +71,6 @@
 
     //   --box-shadow-message: 0 4px 16px -8px rgba(0, 0, 0, 0.04);
     //   --border-radius-message: 16px;
-}
-
-/* --- 浅色模式输入栏文本及光标颜色修复 --- */
-body[theme-mode="light"] {
-    #inputbar input,
-    #inputbar textarea,
-    #inputbox,
-    .form-control {
-        color: var(--color-text) !important; /* 使用规范中定义的浅色模式文本颜色 */
-        caret-color: var(--color-text) !important; /* 使用规范中定义的浅色模式文本颜色作为光标颜色 */
-    }
 }
 
 /* 消息容器样式：增加霓虹AI助手效果 */
@@ -194,135 +183,3 @@ code,
             "zero" 1 !important;
     text-rendering: optimizeLegibility;
 }
-
-/* --- 动画应用 --- */
-[class^="MessageLineContainer"] {
-    /* background: var(--chat-background); */ /* 保持 Maple Neon 原有背景 */
-    border-radius: var(--button-border-radius);
-
-    [class^="MessageItem"]:active {
-        animation: clickAnimation var(--long-timer) var(--animation);
-    }
-}
-
-[class^="SettingHelpTextRow"] {
-    display: inline-block;
-}
-
-[class^="Icon"]:hover,
-[class^="ant"]:hover,
-[class^="ActionButton"]:hover,
-[class^="TopicListItem"]:hover,
-[class^="ProviderListItem"]:hover,
-[class^="MenuItem"]:hover,
-[class^="MenuButton"]:hover,
-[class^="EmojiBackground"]:hover {
-    border-radius: var(--button-border-radius-hover) !important;
-    transition: border-radius var(--short-timer) var(--animation);
-}
-
-[class^="IconItem"]:active,
-[class^="ant-avatar"]:active,
-[class^="ant-btn"]:active,
-[class^="ant-segmented-item"]:active,
-[class^="anticon"]:active,
-[class^="ant-upload"]:active,
-[class^="ant-divider"]:active,
-[class^="ant-tooltip"]:active,
-[class^="ant-message"]:active,
-[class^="ActionButton"]:active,
-[class^="TopicListItem"]:active,
-[class^="ProviderListItem"]:active,
-[class^="MenuItem"]:active,
-[class^="MenuButton"]:active,
-[class^="EmojiBackground"]:active,
-[class~="ant-dropdown-menu-item"]:active,
-[class~="ant-dropdown-menu-submenu-title"]:active,
-[class~="ant-select-selector"]:active,
-[class~="ant-select-item"]:active {
-    border-radius: var(--button-border-radius-active) !important;
-    transition: border-radius var(--short-timer) var(--animation);
-    animation: clickAnimation var(--long-timer) var(--animation);
-}
-
-/* Adapted to v1.2.8 */
-[class^="Menus"] {
-    [class^="Icon"]:active {
-        border-radius: var(--button-border-radius-active) !important;
-        transition: border-radius var(--short-timer) var(--animation);
-        animation: clickAnimation var(--long-timer) var(--animation);
-    }
-}
-
-[class^="Icon"],
-[class^="ant"],
-[class^="ActionButton"],
-[class^="TopicListItem"],
-[class^="ProviderListItem"],
-[class^="MenuItem"],
-[class^="MenuButton"],
-[class^="EmojiBackground"] {
-    border-radius: var(--button-border-radius) !important;
-}
-
-[class^="ant-switch"] {
-    border-radius: 100px !important;
-}
-
-/* 保持 Maple Neon 原有背景色定义 */
-/* body[theme-mode="light"] {
-    background-color: var(--background-light-new);
-}
-
-body[theme-mode="dark"] {
-    background-color: var(--background-dark-new) !important;
-} */
-
-/* 保持 Maple Neon 原有 hover 效果 */
-/* [theme-mode="light"] .bubble .message-user .message-action-button:hover {
-    background-color: var(--button-hover-light) !important;
-}
-
-[theme-mode="dark"] .bubble .message-user .message-action-button:hover {
-    background-color: var(--button-hover-dark) !important;
-} */
-
-[theme-mode="light"] button.ant-btn:hover,
-[theme-mode="dark"] button.ant-btn:hover {
-    border-radius: var(--button-border-radius) !important; /* pulse.scss 中是 --button-border-radius，保持一致 */
-}
-
-/* 保持 Maple Neon 原有 input 背景 */
-/* [theme-mode="light"] [class^="ant-input"],
-[theme-mode="light"] button.ant-btn-variant-outlined {
-    background-color: var(--input-bg-light) !important;
-}
-
-[theme-mode="dark"] [class^="ant-input"],
-[theme-mode="dark"] button.ant-btn-variant-outlined {
-    background-color: var(--input-bg-dark) !important;
-} */
-
-[class$="-tabs-content"],
-[class$="-tab"],
-[id^="content-container"],
-[class^="MessageContainer"],
-[class^="SettingContent"],
-[class^="SettingContainer"],
-[class^="SettingGroup"],
-[class^="MenuList"],
-[class^="ProviderList"],
-[class^="Main"],
-[class~="message-assistant"] {
-    animation: page-popup-right var(--short-timer) var(--animation);
-}
-
-[class~="message-user"] {
-    animation: page-popup-left var(--short-timer) var(--animation);
-}
-
-/* Bug fixes from pulse.scss - 检查是否与 Maple Neon 冲突 */
-/* .bubble .message-user .message-action-button:hover {
-    background-color: var(--color-background-mute);
-} */
-/* 保持 Maple Neon 原有 hover 效果，避免潜在冲突 */
