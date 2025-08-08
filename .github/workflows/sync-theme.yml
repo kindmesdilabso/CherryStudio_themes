@@ -1,0 +1,73 @@
+name: Sync Theme to READMEs
+
+on:
+  push:
+    paths:
+      - 'themes/maple-neon.scss'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get SCSS content
+        id: scss
+        run: |
+          SCSS_CONTENT=$(cat themes/maple-neon.scss | sed 's/\\/\\\\/g' | sed 's/&/\\&/g' | sed 's/`/\\`/g')
+          echo "scss_content<<EOF" >> $GITHUB_ENV
+          echo "$SCSS_CONTENT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Update README files
+        run: |
+          # Function to update a single README file
+          update_readme() {
+            local file=$1
+            local temp_file=$(mktemp)
+            
+            # Use awk to replace the scss block
+            awk -v scss="${{ env.scss_content }}" '
+              BEGIN { in_scss = 0 }
+              /^```scss$/ { 
+                in_scss = 1
+                print $0
+                print scss
+                next
+              }
+              /^```$/ && in_scss { 
+                in_scss = 0
+                print $0
+                next
+              }
+              !in_scss { print $0 }
+            ' "$file" > "$temp_file"
+            
+            # Check if file changed
+            if ! cmp -s "$file" "$temp_file"; then
+              mv "$temp_file" "$file"
+              echo "Updated $file"
+              echo "::set-output name=changed::true"
+            else
+              rm "$temp_file"
+              echo "No changes needed for $file"
+            fi
+          }
+
+          # Update all README files
+          update_readme README.md
+          update_readme docs/README.zh.md
+          update_readme docs/README.fr.md
+          update_readme docs/README.ja.md
+        id: update
+
+      - name: Commit changes
+        if: steps.update.outputs.changed == 'true'
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add README.md docs/README.*.md
+          git commit -m "docs: Update theme content in README files [skip ci]"
+          git push
