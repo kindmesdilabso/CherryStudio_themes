@@ -41,11 +41,14 @@ jobs:
           if git diff --quiet; then
             echo "No changes to commit"
           else
-            # Fetch latest changes and rebase
-            git config pull.rebase true
-            git pull "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" master
+            # Reset to origin/master to ensure clean state
+            git fetch origin
+            git reset --hard origin/master
             
+            # Re-apply changes
             git add README.md docs/README.*.md
             git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss"
-            git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
+            
+            # Push with lease to prevent race conditions
+            git push --force-with-lease "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
           fi
