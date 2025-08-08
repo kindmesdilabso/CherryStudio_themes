@@ -19,6 +19,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: master
 
       - name: Set up Git config
         run: |
@@ -40,6 +41,10 @@ jobs:
           if git diff --quiet; then
             echo "No changes to commit"
           else
+            # Fetch latest changes and rebase
+            git config pull.rebase true
+            git pull "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" master
+            
             git add README.md docs/README.*.md
             git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss"
             git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
