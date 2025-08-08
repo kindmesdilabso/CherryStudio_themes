@@ -11,63 +11,84 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-
-      - name: Get SCSS content
-        id: scss
-        run: |
-          SCSS_CONTENT=$(cat themes/maple-neon.scss | sed 's/\\/\\\\/g' | sed 's/&/\\&/g' | sed 's/`/\\`/g')
-          echo "scss_content<<EOF" >> $GITHUB_ENV
-          echo "$SCSS_CONTENT" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
 
       - name: Update README files
         run: |
+          # Read SCSS content
+          SCSS_CONTENT=$(cat themes/maple-neon.scss)
+          
           # Function to update a single README file
           update_readme() {
             local file=$1
+            echo "Processing $file..."
+            
+            # Create a temporary file for the new content
             local temp_file=$(mktemp)
+            local in_scss_block=false
+            local changes_made=false
             
-            # Use awk to replace the scss block
-            awk -v scss="${{ env.scss_content }}" '
-              BEGIN { in_scss = 0 }
-              /^```scss$/ { 
-                in_scss = 1
-                print $0
-                print scss
-                next
-              }
-              /^```$/ && in_scss { 
-                in_scss = 0
-                print $0
-                next
-              }
-              !in_scss { print $0 }
-            ' "$file" > "$temp_file"
+            while IFS= read -r line; do
+              if [[ "$line" == '```scss' ]]; then
+                echo "$line" >> "$temp_file"
+                echo "$SCSS_CONTENT" >> "$temp_file"
+                in_scss_block=true
+                changes_made=true
+              elif [[ "$line" == '```' ]] && [[ "$in_scss_block" == true ]]; then
+                echo "$line" >> "$temp_file"
+                in_scss_block=false
+              elif [[ "$in_scss_block" == false ]]; then
+                echo "$line" >> "$temp_file"
+              fi
+            done < "$file"
             
-            # Check if file changed
-            if ! cmp -s "$file" "$temp_file"; then
+            # Replace the original file if changes were made
+            if [[ "$changes_made" == true ]]; then
               mv "$temp_file" "$file"
-              echo "Updated $file"
-              echo "::set-output name=changed::true"
+              echo "✓ Updated $file"
+              return 0
             else
               rm "$temp_file"
-              echo "No changes needed for $file"
+              echo "- No SCSS block found in $file"
+              return 1
             fi
           }
 
+          # Track if any files were updated
+          files_updated=false
+          
           # Update all README files
-          update_readme README.md
-          update_readme docs/README.zh.md
-          update_readme docs/README.fr.md
-          update_readme docs/README.ja.md
-        id: update
+          for readme in README.md docs/README.zh.md docs/README.fr.md docs/README.ja.md; do
+            if [[ -f "$readme" ]]; then
+              if update_readme "$readme"; then
+                files_updated=true
+              fi
+            else
+              echo "Warning: $readme not found"
+            fi
+          done
+          
+          # Set output for next step
+          echo "files_updated=$files_updated" >> $GITHUB_OUTPUT
 
-      - name: Commit changes
-        if: steps.update.outputs.changed == 'true'
+      - name: Commit changes if modified
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          if git diff --quiet; then
+            echo "No changes detected"
+            exit 0
+          fi
+          
+          echo "Changes detected, committing..."
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Pull latest changes to avoid conflicts
+          git pull origin ${{ github.ref_name }} --rebase
+          
+          # Add and commit changes
           git add README.md docs/README.*.md
-          git commit -m "docs: Update theme content in README files [skip ci]"
-          git push
+          git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss [skip ci]"
+          
+          # Push changes
+          git push origin ${{ github.ref_name }}
