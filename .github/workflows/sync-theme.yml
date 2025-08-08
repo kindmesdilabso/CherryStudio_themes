@@ -90,5 +90,11 @@ jobs:
           git add README.md docs/README.*.md
           git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss [skip ci]"
           
-          # Push changes
+      - name: Pull latest changes
+        run: |
+          git fetch origin ${{ github.ref_name }}
+          git pull origin ${{ github.ref_name }}
+
+      - name: Push changes
+        run: |
           git push origin ${{ github.ref_name }}
