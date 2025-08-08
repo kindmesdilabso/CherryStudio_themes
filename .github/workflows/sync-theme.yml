@@ -84,17 +84,11 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           # Pull latest changes to avoid conflicts
-          git pull origin ${{ github.ref_name }} --rebase
+          git pull --rebase origin ${{ github.ref_name }}
           
           # Add and commit changes
           git add README.md docs/README.*.md
           git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss [skip ci]"
           
-      - name: Pull latest changes
-        run: |
-          git fetch origin ${{ github.ref_name }}
-          git pull origin ${{ github.ref_name }}
-
-      - name: Push changes
-        run: |
+          # Push changes
           git push origin ${{ github.ref_name }}
