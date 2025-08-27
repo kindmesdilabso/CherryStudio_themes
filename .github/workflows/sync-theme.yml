@@ -3,7 +3,7 @@ name: Sync Theme to READMEs
 on:
   push:
     paths:
-      - 'themes/maple-neon.scss'
+      - "themes/maple-neon.scss"
 
 jobs:
   sync:
@@ -15,20 +15,21 @@ jobs:
           fetch-depth: 0
 
       - name: Update README files
+        id: update
         run: |
           # Read SCSS content
           SCSS_CONTENT=$(cat themes/maple-neon.scss)
-          
+
           # Function to update a single README file
           update_readme() {
             local file=$1
             echo "Processing $file..."
-            
+
             # Create a temporary file for the new content
             local temp_file=$(mktemp)
             local in_scss_block=false
             local changes_made=false
-            
+
             while IFS= read -r line; do
               if [[ "$line" == '```scss' ]]; then
                 echo "$line" >> "$temp_file"
@@ -42,7 +43,7 @@ jobs:
                 echo "$line" >> "$temp_file"
               fi
             done < "$file"
-            
+
             # Replace the original file if changes were made
             if [[ "$changes_made" == true ]]; then
               mv "$temp_file" "$file"
@@ -57,7 +58,7 @@ jobs:
 
           # Track if any files were updated
           files_updated=false
-          
+
           # Update all README files
           for readme in README.md docs/README.zh.md docs/README.fr.md docs/README.ja.md; do
             if [[ -f "$readme" ]]; then
@@ -68,30 +69,28 @@ jobs:
               echo "Warning: $readme not found"
             fi
           done
-          
-          # Set output for next step
-          echo "files_updated=$files_updated" >> $GITHUB_OUTPUT
 
-      - name: Commit changes if modified
+          # Set output for next step
+          echo "files_updated=$files_updated" >> $GITHUB_ENV
+
+      - name: Commit and push changes
         run: |
-          if git diff --quiet; then
+          if ! git diff --quiet; then
+            echo "Changes detected, committing..."
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+            # Pull latest changes to avoid conflicts
+            git pull --rebase origin ${{ github.ref_name }}
+
+            # Add and commit changes
+            git add README.md docs/README.*.md
+            git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss [skip ci]"
+
+            # Push changes
+            git push origin ${{ github.ref_name }}
+
+            echo "Changes committed and pushed successfully"
+          else
             echo "No changes detected"
-            exit 0
           fi
-          
-          echo "Changes detected, committing..."
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-      - name: Pull latest changes to avoid conflicts
-        run: |
-          git pull --rebase origin ${{ github.ref_name }}
-          
-      - name: Add and commit changes
-        run: |
-          git add README.md docs/README.*.md
-          git diff-index --quiet HEAD || git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss [skip ci]"
-          
-      - name: Push changes
-        run: |
-          git push origin ${{ github.ref_name }}
