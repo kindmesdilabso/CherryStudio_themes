@@ -47,7 +47,7 @@ jobs:
             # Replace the original file if changes were made
             if [[ "$changes_made" == true ]]; then
               mv "$temp_file" "$file"
-              echo "✓ Updated $file"
+              echo "✓ Updated $file to README."
               return 0
             else
               rm "$temp_file"
