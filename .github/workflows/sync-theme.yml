@@ -70,27 +70,28 @@ jobs:
             fi
           done
 
-          # Set output for next step
-          echo "files_updated=$files_updated" >> $GITHUB_ENV
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Commit and push changes
         run: |
+          # First pull with rebase to get latest changes
+          git pull --rebase origin ${{ github.ref_name }}
+
+          # Check for changes after pulling
           if ! git diff --quiet; then
             echo "Changes detected, committing..."
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-            # Pull latest changes to avoid conflicts
-            git pull --rebase origin ${{ github.ref_name }}
 
             # Add and commit changes
             git add README.md docs/README.*.md
             git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss [skip ci]"
 
-            # Push changes
-            git push origin ${{ github.ref_name }}
+            # Force push with lease for safety
+            git push --force-with-lease origin ${{ github.ref_name }}
 
             echo "Changes committed and pushed successfully"
           else
-            echo "No changes detected"
+            echo "No changes detected after pulling latest changes"
           fi
