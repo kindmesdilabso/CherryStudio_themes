@@ -3,7 +3,7 @@ name: Sync Theme to READMEs
 on:
   push:
     paths:
-      - "themes/maple-neon.scss"
+      - "themes/maple-neon.css"
 
 jobs:
   sync:
@@ -17,8 +17,8 @@ jobs:
       - name: Update README files
         id: update
         run: |
-          # Read SCSS content
-          SCSS_CONTENT=$(cat themes/maple-neon.scss)
+          # Read CSS content
+          CSS_CONTENT=$(cat themes/maple-neon.css)
 
           # Function to update a single README file
           update_readme() {
@@ -27,19 +27,19 @@ jobs:
 
             # Create a temporary file for the new content
             local temp_file=$(mktemp)
-            local in_scss_block=false
+            local in_css_block=false
             local changes_made=false
 
             while IFS= read -r line; do
-              if [[ "$line" == '```scss' ]]; then
+              if [[ "$line" == '```css' ]]; then
                 echo "$line" >> "$temp_file"
-                echo "$SCSS_CONTENT" >> "$temp_file"
-                in_scss_block=true
+                echo "$CSS_CONTENT" >> "$temp_file"
+                in_css_block=true
                 changes_made=true
-              elif [[ "$line" == '```' ]] && [[ "$in_scss_block" == true ]]; then
+              elif [[ "$line" == '```' ]] && [[ "$in_css_block" == true ]]; then
                 echo "$line" >> "$temp_file"
-                in_scss_block=false
-              elif [[ "$in_scss_block" == false ]]; then
+                in_css_block=false
+              elif [[ "$in_css_block" == false ]]; then
                 echo "$line" >> "$temp_file"
               fi
             done < "$file"
@@ -51,7 +51,7 @@ jobs:
               return 0
             else
               rm "$temp_file"
-              echo "- No SCSS block found in $file"
+              echo "- No CSS block found in $file"
               return 1
             fi
           }
@@ -86,7 +86,7 @@ jobs:
 
             # Add and commit changes
             git add README.md docs/README.*.md
-            git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss [skip ci]"
+            git commit -m "docs: Update all READMEs with latest CSS from maple-neon.css [skip ci]"
 
             # Force push with lease for safety
             git push --force-with-lease origin ${{ github.ref_name }}

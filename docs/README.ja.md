@@ -4,7 +4,7 @@
 ![Cherry Studio](https://www.cherry-ai.com/assets/cherry-logo-CtmH594q.svg)
 ![Static Badge](https://img.shields.io/badge/Tailored_for-Cherry_Studio-red?logo=Github)
 ![Static Badge](https://img.shields.io/badge/License-MIT-blue)
-![Static Badge](https://img.shields.io/badge/Language-SCSS-pink?logo=css)
+![Static Badge](https://img.shields.io/badge/Language-css-pink?logo=css)
 ![Static Badge](https://img.shields.io/badge/Release-v1.2.1-green)
 <div style="text-align: center">
 中文 |
@@ -22,14 +22,14 @@ Cherry Studioに関する詳細情報は、[こちら](https://github.com/Cherry
 
 1. （推奨ですが必須ではありません）[Maple フォント](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip)をダウンロードしてください。このフォントが好きでない場合、既定の代替フォントは`Fira Code`になります。
 2. （推奨ですが必須ではありません）[鴻蒙フォント](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip)から鴻蒙フォントをダウンロードしてください。このフォントが好きでない場合、既定の代替フォントはシステムUIの既定のフォントになります。
-3. [maple-neon-minimal.scss](../themes/maple-neon-minimal.scss) ファイル（オリジナルバージョン）の内容をコピーするか、オリジナルファイルをダウンロードして（カスタマイズ用）ください。
+3. [maple-neon-minimal.css](../themes/maple-neon-minimal.css) ファイル（オリジナルバージョン）の内容をコピーするか、オリジナルファイルをダウンロードして（カスタマイズ用）ください。
 4. それをCherry Studioに貼り付けてください。
 5. 完了！
 
 <details>
 <summary>またはここからコピーしましょう！</summary>
 
-```scss
+```css
 /* Maple Neon Theme Font Minimal: A Maple Neon theme version that only specifies the font */
 
 /* 动画定义 */

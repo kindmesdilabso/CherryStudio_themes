@@ -4,7 +4,7 @@
 ![Cherry Studio](https://www.cherry-ai.com/assets/cherry-logo-CtmH594q.svg)
 ![Static Badge](https://img.shields.io/badge/Tailored_for-Cherry_Studio-red?logo=Github)
 ![Static Badge](https://img.shields.io/badge/License-MIT-blue)
-![Static Badge](https://img.shields.io/badge/Language-SCSS-pink?logo=css)
+![Static Badge](https://img.shields.io/badge/Language-CSS-pink?logo=css)
 ![Static Badge](https://img.shields.io/badge/Release-v1.2.1-green)
 <div style="text-align: center">
 <a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.zh.md">中文</a> |
@@ -22,14 +22,14 @@ Pour plus d'informations sur Cherry Studio, consultez [ici](https://github.com/C
 
 1. (Recommandé mais pas obligatoire) Téléchargez [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip). Si vous n'aimez pas la police d'écriture, la police de secours par défaut devrait être celle de `Fira Code`.
 2. (Recommandé mais pas obligatoire) Téléchargez Harmony OS Sans depuis [Harmony OS Sans](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip). Si vous n'aimez pas la police d'écriture, la police de secours par défaut devrait être celle de l'interface utilisateur de votre système.
-3. Copiez le contenu du fichier [maple-neon.scss](../themes/maple-neon.scss) (pour la version d'origine) ou téléchargez le fichier brut (pour la personnalisation).
+3. Copiez le contenu du fichier [maple-neon.css](../themes/maple-neon.css) (pour la version d'origine) ou téléchargez le fichier brut (pour la personnalisation).
 4. Colliez-le dans Cherry Studio.
 5. Et voilà !
 
 <details>
 <summary>Ou copiez le CSS depuis ici !</summary>
 
-```scss
+```css
 /* Maple Neon Theme Font Minimal: A Maple Neon theme version that only specifies the font */
 
 /* 动画定义 */
