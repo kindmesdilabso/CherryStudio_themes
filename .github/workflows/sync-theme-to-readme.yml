@@ -1,0 +1,97 @@
+name: Sync Theme to READMEs
+
+on:
+  push:
+    paths:
+      - "themes/maple-neon.css"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Update README files
+        id: update
+        run: |
+          # Read CSS content
+          CSS_CONTENT=$(cat themes/maple-neon.css)
+
+          # Function to update a single README file
+          update_readme() {
+            local file=$1
+            echo "Processing $file..."
+
+            # Create a temporary file for the new content
+            local temp_file=$(mktemp)
+            local in_css_block=false
+            local changes_made=false
+
+            while IFS= read -r line; do
+              if [[ "$line" == '```css' ]]; then
+                echo "$line" >> "$temp_file"
+                echo "$CSS_CONTENT" >> "$temp_file"
+                in_css_block=true
+                changes_made=true
+              elif [[ "$line" == '```' ]] && [[ "$in_css_block" == true ]]; then
+                echo "$line" >> "$temp_file"
+                in_css_block=false
+              elif [[ "$in_css_block" == false ]]; then
+                echo "$line" >> "$temp_file"
+              fi
+            done < "$file"
+
+            # Replace the original file if changes were made
+            if [[ "$changes_made" == true ]]; then
+              mv "$temp_file" "$file"
+              echo "✓ Updated $file to README."
+              return 0
+            else
+              rm "$temp_file"
+              echo "- No CSS block found in $file"
+              return 1
+            fi
+          }
+
+          # Track if any files were updated
+          files_updated=false
+
+          # Update all README files
+          for readme in README.md docs/README.zh.md docs/README.fr.md docs/README.ja.md; do
+            if [[ -f "$readme" ]]; then
+              if update_readme "$readme"; then
+                files_updated=true
+              fi
+            else
+              echo "Warning: $readme not found"
+            fi
+          done
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push changes
+        run: |
+          # First pull with rebase to get latest changes
+          git pull --rebase origin ${{ github.ref_name }}
+
+          # Check for changes after pulling
+          if ! git diff --quiet; then
+            echo "Changes detected, committing..."
+
+            # Add and commit changes
+            git add README.md docs/README.*.md
+            git commit -m "docs: Update all READMEs with latest CSS from maple-neon.css [skip ci]"
+
+            # Force push with lease for safety
+            git push --force-with-lease origin ${{ github.ref_name }}
+
+            echo "Changes committed and pushed successfully"
+          else
+            echo "No changes detected after pulling latest changes"
+          fi
